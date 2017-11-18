@@ -1,0 +1,85 @@
+
+start:
+  - play morningBGM:
+  - show school_morning: WITH FADE
+  - show deuzi: happy AT CENTER WITH FADE
+  - deuzi says: Welcome to our Tutorial Game!
+  - call helloworld:
+      param1: light
+      param2: salad
+  - deuzi says: My name is Deuzilene and I'll be your guide.
+  - show deuzi: normal
+  - deuzi says: So you want to make a Visual Novel.
+  - deuzi says: With RenJS you can easily make games just like this one.
+  - deuzi says: RenJS is inspired by Ren'Py and based on PhaserJS.
+  - deuzi says: If you are familiar with any of those you have an advantage.
+  - deuzi says: And if not...
+  - show deuzi: happy
+  - deuzi says: No problem!
+  - deuzi says: RenJS is made so the text of your story is written intuitively like a script. 
+  - show deuzi: normal
+  - deuzi says: Once you learn the structure, there's no limit to what you can create.
+  - deuzi says: So let's start with...
+  - effect SHOWTITLE: 
+    title: Chapter 1
+    subtitle: The basics 
+  - deuzi says: First thing we'll check is the file structure.
+  - deuzi says: That is, all the files you need for your game to work properly.
+  - deuzi says: We'll use this game as an example.
+  - deuzi says: Have you downloaded it yet?
+  - choice:
+    - I have it!:
+      - show deuzi: happy
+      - deuzi says: Great! What a hardworking student.
+    - Not yet:
+      - show deuzi: angry
+      - deuzi says: What are you waiting for!?
+      - deuzi says: Go do it, I'll wait...
+      - choice:
+        - I have it!:
+          - show deuzi: happy
+          - deuzi says: Good! Let's continue.
+  - show deuzi: normal
+  - deuzi says: Now, open the root folder of this game.
+
+
+varsScene:
+  # numeric variables
+  - var score: 0
+  - var extraPoints: 3
+  - var score: "{score} + 10"
+  - var bonification: "{extraPoints} - 1"
+  - var totalScore: "({score} + {extraPoints}) * {bonification}"
+  # boolean variables
+  - var lightOn: true
+  - var lightOff: "!{lightOn}"
+  - var lampOn: true
+  - allLightsOn: "{lightOn} && {lampOn}"
+  - canRead: "{lightOn} || {lampOn}"
+  - highScore: "{score} > 10"
+  - perfectScore: "{score} == {maxScore}"
+  - lowScore: "{score} <= {maxScore} / 2"
+  # string variables
+  - var name: Marco
+  - var surname: Da Silva
+  - var wholeName: "Mr. {name} {surname}"
+  - text: "Hello {wholeName}, your score is {score}!"
+  # if
+  - if ({lightOn}):
+    - text: The light is on.
+  - else:
+    - text: The light is off.
+  - deuzi says: Let's check your score.
+  - deuzi says: "You have {score} points."
+  - if ({score > 10}):
+    - show deuzi: happy
+    - deuzi says: You did great! Congratulations!
+    - if ({name} == {favouriteStudent}):
+      - deuzi says: That's why you're my favourite student.
+  - else:
+    - deuzi says: It's not bad, but you'll have to study a bit more next time.
+
+    - call helloworld:
+      param1: hello
+      param2: world
+
