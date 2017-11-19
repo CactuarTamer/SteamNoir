@@ -46,6 +46,8 @@ var preload = {
         var text = jsyaml.load(game.cache.getText("story"+index));
         story = _.extend(story,text);
     });
+    console.log("Story Array:")
+    console.log(story);
     RenJS.story = story;
     if (story.simpleGUI){
         RenJS.gui = new SimpleGUI(story.simpleGUI);    

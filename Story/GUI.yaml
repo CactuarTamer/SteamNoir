@@ -2,13 +2,15 @@ simpleGUI:
   assets:
     fonts:
       - audimat-mono
+      - Steampunk DEMO
+      - Glass Antiqua
     images:
       mainBackground: assets/gui/menu.png
       settingsBackground: assets/gui/settings.png
       sliderFull: assets/gui/slider.png
       messageBox:  assets/gui/textbox.png
       nameBox:  assets/gui/namebox.png
-      ctc: assets/gui/ctc.png
+      ctc: assets/gui/gearblink.png
     spritesheets:
       startButton: assets/gui/startbutton.png 163 83
       loadButton: assets/gui/loadbutton.png 163 83
@@ -35,7 +37,7 @@ simpleGUI:
         x: 36 
         y: 36
       textStyle:
-        font: 16pt audimat-mono
+        font: 16pt Glass Antiqua
         wordWrap: true
         wordWrapWidth: 545
         fill: "#ac9393"
@@ -44,7 +46,7 @@ simpleGUI:
         x: 36 
         y: -40
       textStyle:
-        font: 20pt audimat-mono
+        font: 20pt 'Glass Antiqua'
         boundsAlignH: center
         boundsAlignV: middle
     ctc: 
