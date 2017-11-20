@@ -11,8 +11,8 @@ setup:
     store: assets/backgrounds/store.jpg
   characters:
     deuzi:
-      displayName: Deuzilene
-      speechColour: "#ca90cf"
+      displayName: Cactuar
+      speechColour: "#000000"
       looks:
         normal: assets/characters/Char3NormalSchool.png
         happy: assets/characters/Char3HappySchool.png
@@ -21,8 +21,8 @@ setup:
         happyC: assets/characters/Char3Happy.png
         angryC: assets/characters/Char3Angry.png
     liz:
-      displayName: Liz
-      speechColour: "#d5e6e7"
+      displayName: F4celess
+      speechColour: "#000000"
       looks:
         normal: assets/characters/Char2NormalSchool.png
         happy: assets/characters/Char2HappySchool.png
@@ -31,8 +31,8 @@ setup:
         happyC: assets/characters/Char2Happy.png
         angryC: assets/characters/Char2Angry.png
     marco:
-      displayName: Marco
-      speechColour: "#123022"
+      displayName: ThereIsNoJustice
+      speechColour: "#FF0000"
       looks:
         normal: assets/characters/Char1NormalSchool.png
         happy: assets/characters/Char1HappySchool.png
@@ -42,8 +42,8 @@ setup:
         happyC: assets/characters/Char1Happy.png
         angryC: assets/characters/Char1Angry.png
     jair:
-      displayName: Jair
-      speechColour: "#6a2b2b"
+      displayName: H_AK
+      speechColour: "#000000"
       looks:
         normal: assets/characters/Char4NormalSchool.png
         happy: assets/characters/Char4HappySchool.png
