@@ -1,5 +1,5 @@
 
-start:
+tomato:
   - play morningBGM:
   - show school_morning: WITH FADE
   - show deuzi: happy AT CENTER WITH FADE
