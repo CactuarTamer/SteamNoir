@@ -1,0 +1,131 @@
+
+start:
+  - play morningBGM:
+  - show school_morning: WITH FADE
+  - show deuzi: happy AT CENTER WITH FADE
+  - deuzi says: Welcome to our Game!
+  - call helloworld:
+      param1: light
+      param2: salad
+  - deuzi says: Of course, it's not OUR game quite yet.
+  - show deuzi: normal
+  - deuzi says: We're gonna have to do a lot of stuff to make it ours.
+  - effect SHOWTITLE: 
+    title: Chapter 1
+    subtitle: All the shit we need to do. 
+  - deuzi says: I've already tweaked the look of the UI a little bit, but we'll need to tweak it more as we go.
+  - deuzi says: We need to add the new mechanics.
+  - deuzi says: We need art assets. Hopefully real sketchy ones as soon as possible.
+  - deuzi says: Some backgrounds, some characters, etc. Oh, and...
+  - show deuzi: happy
+  - deuzi says: Story!
+  - deuzi says: We should get a super basic prologue up, that branches into two options. 
+  - show deuzi: normal
+  - deuzi says: Whatever two options we think we're gonna go with to start
+  - deuzi says: So let's start!
+  - deuzi says: First go ahead and make a github account if you don't have one.
+  - deuzi says: And check out the files. Assets and Story will be the most important folder for you guys.
+  - deuzi says: We can talk about stuff in the chat later, and get to work making this OURS.
+  - deuzi says: How about it?
+  - choice:
+    - Sounds Great!:
+      - show deuzi: happy
+      - deuzi says: Awesome! This is gonna be amazing.
+    - Nah:
+      - show deuzi: angry
+      - deuzi says: Well too bad!
+      - deuzi says: You're going to develop a furry steampunk noir mystery game and you will LIKE it!
+      - choice:
+        - Fiiiine.:
+          - show deuzi: happy
+          - deuzi says: Great! Beatings will continue until morale improves.
+  - show deuzi: normal
+  - deuzi says: Now, go get familiar with the files!
+  - scene: endGame
+
+
+endGame:
+  - show street_afternoon:
+  - show deuzi: AT 300,600 WITH FADE
+    flipped: false
+  - show liz: happy AT 500,600 WITH FADE
+  - show jair: happy AT RIGHT WITH FADE
+  - show marco: happy AT LEFT WITH FADE
+  - deuzi says: So, we're really going to do this!
+  - deuzi says: We're all going to put in at least a little work every week, no matter how many damned Amazon product descriptions we have to do.
+  - show deuzi: happy
+  - deuzi says: I'm so excite!
+  - liz says: I'm looking forward to seeing what the story and world will be like.
+  - jair says: We're gonna write so much lore!
+  - marco says: And great art! And great characters!
+  - deuzi says: We can do this thing!
+  - effect ROLLINGCREDITS:
+    endGame: true
+    text:
+      - Developed with
+      - lunafromthemoon's RenJS Powered by PhaserJS
+      - null
+      - Thanks for Playing
+      - Steam Furry Noir Mystery the Game
+      - null
+      - null
+      - Cactuar
+      - -Developer
+      - null
+      - F4celess
+      - -Builder of Worlds
+      - null
+      - Delta505, Highlander_AK
+      - -Crafters of Artstuffs
+      - null
+      - ThereIsNoJustice
+      - -Wordsmithy
+      - null
+      - characters by
+      - -Everyone
+      - null
+      - music by
+      - we need to find some music
+
+
+
+varsScene:
+  # numeric variables
+  - var score: 0
+  - var extraPoints: 3
+  - var score: "{score} + 10"
+  - var bonification: "{extraPoints} - 1"
+  - var totalScore: "({score} + {extraPoints}) * {bonification}"
+  # boolean variables
+  - var lightOn: true
+  - var lightOff: "!{lightOn}"
+  - var lampOn: true
+  - allLightsOn: "{lightOn} && {lampOn}"
+  - canRead: "{lightOn} || {lampOn}"
+  - highScore: "{score} > 10"
+  - perfectScore: "{score} == {maxScore}"
+  - lowScore: "{score} <= {maxScore} / 2"
+  # string variables
+  - var name: Marco
+  - var surname: Da Silva
+  - var wholeName: "Mr. {name} {surname}"
+  - text: "Hello {wholeName}, your score is {score}!"
+  # if
+  - if ({lightOn}):
+    - text: The light is on.
+  - else:
+    - text: The light is off.
+  - deuzi says: Let's check your score.
+  - deuzi says: "You have {score} points."
+  - if ({score > 10}):
+    - show deuzi: happy
+    - deuzi says: You did great! Congratulations!
+    - if ({name} == {favouriteStudent}):
+      - deuzi says: That's why you're my favourite student.
+  - else:
+    - deuzi says: It's not bad, but you'll have to study a bit more next time.
+
+    - call helloworld:
+      param1: hello
+      param2: world
+
