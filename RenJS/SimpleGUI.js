@@ -183,12 +183,18 @@ function SimpleGUI(meta){
     //menu actions
     this.buttonActions = {
         start: function(){
-            RenJS.gui.hideMenu();
+            game.state.add("gameTop",gameTop);
+            game.state.start("gameTop");
+        },
+        prologue: function(){
+            console.log("prologue button firing...");
+            console.log(RenJS.gui.currentMenu);
+            RenJS.gui.hideMenu("gametop", false);
             RenJS.gui.showHUD();
             RenJS.start();
         },
         load: function(){
-            RenJS.gui.hideMenu();
+            RenJS.gui.hideMenu("main", true);
             RenJS.load(0);
         },
         auto: RenJS.auto,
@@ -214,10 +220,13 @@ function SimpleGUI(meta){
 
     //show menu
     this.showMenu = function(menu){
+        console.log("Showing menu... "+menu);
         RenJS.pause();
         this.previousMenu = this.currentMenu;
         this.currentMenu = menu;
+        console.log("Current menu is..."+this.currentMenu);
         this.menus[menu].group.visible = true;
+        console.log(this.menus[menu].group);
         game.add.tween(this.menus[menu].group).to( {alpha:1}, 750,null,true);
         if (this.menus[menu].music){
             var music = this.menus[menu].music;
@@ -233,15 +242,23 @@ function SimpleGUI(meta){
     };
 
     //hide menu
-    this.hideMenu = function(menu){  
-        var menu = this.currentMenu;
-        // console.log("hiding "+menu); 
+    this.hideMenu = function(menu, goback = false){  
+        if(!menu || typeof menu == null){
+            var menu = this.currentMenu;
+        }else {
+            //menu is menu
+        }
+        console.log("Hiding menu... "+menu);
+        console.log(this);
         var tween = game.add.tween(this.menus[menu].group).to( {alpha:0}, 400);
         tween.onComplete.add(function(){
             this.menus[menu].group.visible = false;
             this.currentMenu = null;
-            if (this.previousMenu){
-                this.showMenu(this.previousMenu);   
+            if (this.previousMenu && goback){
+                this.showMenu(this.previousMenu);
+                console.log("Going back to previous menu!");   
+            }else{
+                this.currentMenu = menu;
             }
         },this);
         if (this.menus[menu].music && this.menus[menu].music.ready){

@@ -5,6 +5,7 @@ simpleGUI:
       - Steampunk DEMO
       - Glass Antiqua
     images:
+      gametopBackground: assets/gui/menu.png
       mainBackground: assets/gui/menu.png
       settingsBackground: assets/gui/settings.png
       sliderFull: assets/gui/slider.png
@@ -12,6 +13,9 @@ simpleGUI:
       nameBox:  assets/gui/namebox.png
       ctc: assets/gui/gearblink.png
     spritesheets:
+      proloButton: assets/gui/prolobutton.png 163 83
+      ch1Button: assets/gui/ch1button.png 163 83
+      ch2Button: assets/gui/ch2button.png 163 83
       startButton: assets/gui/startbutton.png 163 83
       loadButton: assets/gui/loadbutton.png 163 83
       saveButton: assets/gui/savebutton.png 163 83
@@ -90,6 +94,24 @@ simpleGUI:
         sprite: qmSettingsButton
       # mute: qmMuteButton 1175 60
   menus:
+    gametop:
+      music: mainMusic
+      buttons:
+        prologue: 
+          position:
+            x: 112
+            y: 462
+          sprite: proloButton
+        chapter1:  
+          position:
+            x: 320
+            y: 462
+          sprite: ch1Button
+        chapter2:
+          position:
+            x: 528
+            y: 462
+          sprite: ch2Button        
     main: 
       music: mainMusic
       buttons: 

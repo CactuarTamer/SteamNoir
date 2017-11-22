@@ -136,7 +136,6 @@ var preloadStory = {
 
 var init = {
   create:function(){            
-    RenJS.storyManager.setupStory();
     RenJS.gui.init();
     RenJS.initInput();
     RenJS.audioManager.init(function(){
