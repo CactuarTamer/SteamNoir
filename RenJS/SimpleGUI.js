@@ -261,7 +261,12 @@ function SimpleGUI(meta){
                 this.currentMenu = menu;
             }
         },this);
+        console.log(this.menus[menu].music);
+        console.log(this.menus[menu].music.ready);
         if (this.menus[menu].music && this.menus[menu].music.ready){
+            console.log("In music fader, fadeout is...");
+            console.log(this.menus[menu].music.fadeOut(400));
+
             this.menus[menu].music.fadeOut(400);
         };   
         tween.start();
