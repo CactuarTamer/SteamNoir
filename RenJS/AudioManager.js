@@ -100,6 +100,7 @@ function AudioManager(){
         this.stop("bgm","FADE");
     }
 
+
     this.stop = function(type, transition){
         if (!this.current[type]){
             return;

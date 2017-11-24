@@ -12,11 +12,12 @@ var gameTop = {
   },
 
   create: function () {
+
     RenJS.storyManager.setupStory();
     RenJS.gui.init();
     RenJS.initInput();
+    game.sound.stopAll();
     RenJS.audioManager.init(function(){
-    	RenJS.gui.hideMenu();
         RenJS.gui.showMenu("gametop");    
     });
   	console.log("Gametop Top");

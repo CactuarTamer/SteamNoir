@@ -95,7 +95,7 @@ simpleGUI:
       # mute: qmMuteButton 1175 60
   menus:
     gametop:
-      music: mainMusic
+      music: victoriana
       buttons:
         prologue: 
           position:

@@ -183,6 +183,7 @@ function SimpleGUI(meta){
     //menu actions
     this.buttonActions = {
         start: function(){
+            RenJS.gui.hideMenu("main", false);
             game.state.add("gameTop",gameTop);
             game.state.start("gameTop");
         },
@@ -261,14 +262,57 @@ function SimpleGUI(meta){
                 this.currentMenu = menu;
             }
         },this);
-        console.log(this.menus[menu].music);
-        console.log(this.menus[menu].music.ready);
-        if (this.menus[menu].music && this.menus[menu].music.ready){
-            console.log("In music fader, fadeout is...");
-            console.log(this.menus[menu].music.fadeOut(400));
 
-            this.menus[menu].music.fadeOut(400);
+        //Various attempts to figure out where things were going wrong
+        console.log("Dig down!");
+        console.log(this.menus[menu]);
+        console.log(this.menus[menu].music);
+        var thismusic = this.menus[menu].music;
+        console.log(thismusic.ready);
+
+        //Decided to try a promise?
+        var timeout = 3000;
+        var start = Date.now();
+        waitForMusic = function(resolve, reject) {
+            console.log("Waiting...");
+
+            if (typeof thismusic != "undefined"){
+
+                console.log("Music Thing was defined!");
+                console.log(thismusic);
+                resolve(thismusic);
+            }else if (timeout && (Date.now() - start) >= timeout){
+                console.log("error, timeout. This is redundant.");
+                reject(new Error("timeout"));
+            }
+            else{
+                console.log("Loop Promise?");
+                setTimeout(waitForMusic.bind(this, resolve, reject), 30);
+            }
+        }
+
+
+        var ensureMusicIsSet = function(timeout){
+            console.log("Promise?");
+            return new Promise(waitForMusic);
+        };
+
+        //I just want the music to stop.
+        var pie = ensureMusicIsSet(timeout);
+        pie.then(function(data){
+            console.log(data);
+            //please stop.
+            data.fadeTo(400,0);
+        });
+        
+
+        if (this.menus[menu].music && this.menus[menu].music.ready){
+            //absolutely nothing works
+            console.log("In music fader, fading...");
+            console.log(thismusic);
+            thismusic.fadeOut(400);
         };   
+
         tween.start();
         
     }
