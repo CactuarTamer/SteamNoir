@@ -263,48 +263,8 @@ function SimpleGUI(meta){
             }
         },this);
 
-        //Various attempts to figure out where things were going wrong
-        console.log("Dig down!");
-        console.log(this.menus[menu]);
-        console.log(this.menus[menu].music);
+
         var thismusic = this.menus[menu].music;
-        console.log(thismusic.ready);
-
-        //Decided to try a promise?
-        var timeout = 3000;
-        var start = Date.now();
-        waitForMusic = function(resolve, reject) {
-            console.log("Waiting...");
-
-            if (typeof thismusic != "undefined"){
-
-                console.log("Music Thing was defined!");
-                console.log(thismusic);
-                resolve(thismusic);
-            }else if (timeout && (Date.now() - start) >= timeout){
-                console.log("error, timeout. This is redundant.");
-                reject(new Error("timeout"));
-            }
-            else{
-                console.log("Loop Promise?");
-                setTimeout(waitForMusic.bind(this, resolve, reject), 30);
-            }
-        }
-
-
-        var ensureMusicIsSet = function(timeout){
-            console.log("Promise?");
-            return new Promise(waitForMusic);
-        };
-
-        //I just want the music to stop.
-        var pie = ensureMusicIsSet(timeout);
-        pie.then(function(data){
-            console.log(data);
-            //please stop.
-            data.fadeTo(400,0);
-        });
-        
 
         if (this.menus[menu].music && this.menus[menu].music.ready){
             //absolutely nothing works
