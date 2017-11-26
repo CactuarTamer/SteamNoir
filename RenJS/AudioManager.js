@@ -64,7 +64,7 @@ function AudioManager(){
         if (current.bgm){
             this.play(current.bgm,"bgm",true,"FADE");
         }
-        if (current.bgm){
+        if (current.bgs){
             this.play(current.bgs,"bgs",true,"FADE");
         }
 

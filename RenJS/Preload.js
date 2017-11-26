@@ -139,8 +139,10 @@ var init = {
     RenJS.gui.init();
     RenJS.initInput();
     RenJS.audioManager.init(function(){
-        RenJS.gui.showMenu("main");    
+        RenJS.gui.showMenu("main"); 
+        console.log(RenJS.audioManager);   
     });
+
   },
 
   render: function() {

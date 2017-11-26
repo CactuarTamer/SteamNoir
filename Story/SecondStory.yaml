@@ -1,7 +1,7 @@
 
-start:
-  - play morningBGM:
-  - show school_morning: WITH FADE
+prologue:
+  - play victoriana:
+  - show docks: WITH FADE
   - show deuzi: happy AT CENTER WITH FADE
   - deuzi says: Welcome to our Game!
   - call helloworld:
@@ -11,7 +11,7 @@ start:
   - show deuzi: normal
   - deuzi says: We're gonna have to do a lot of stuff to make it ours.
   - effect SHOWTITLE: 
-    title: Chapter 1
+    title: Prologue
     subtitle: All the shit we need to do. 
   - deuzi says: I've already tweaked the look of the UI a little bit, but we'll need to tweak it more as we go.
   - deuzi says: We need to add the new mechanics.
@@ -41,8 +41,50 @@ start:
           - deuzi says: Great! Beatings will continue until morale improves.
   - show deuzi: normal
   - deuzi says: Now, go get familiar with the files!
-  - scene: endGame
+  - goback: gametop
 
+
+Chapter02:
+  - play thunderchild:
+  - show airship_station: WITH FADE
+  - show deuzi: happy AT CENTER WITH FADE
+  - deuzi says: Welcome to our Game!
+  - call helloworld:
+      param1: light
+      param2: salad
+  - deuzi says: Of course, it's not OUR game quite yet.
+  - show deuzi: normal
+  - deuzi says: We're gonna have to do a lot of stuff to make it ours.
+  - effect SHOWTITLE: 
+    title: Chapter 2
+    subtitle: Here's some more uplifting music.
+  - deuzi says: I've already tweaked the look of the UI a little bit, but we'll need to tweak it more as we go.
+  - deuzi says: We need to add the new mechanics.
+  - deuzi says: We need art assets. Hopefully real sketchy ones as soon as possible.
+  - deuzi says: Some backgrounds, some characters, etc. Oh, and...
+  - show deuzi: happy
+  - goback: gametop
+
+Chapter01:
+  - play prose:
+  - show factory: WITH FADE
+  - show deuzi: happy AT CENTER WITH FADE
+  - deuzi says: Welcome to our Game!
+  - call helloworld:
+      param1: light
+      param2: salad
+  - deuzi says: Of course, it's not OUR game quite yet.
+  - show deuzi: normal
+  - deuzi says: We're gonna have to do a lot of stuff to make it ours.
+  - effect SHOWTITLE: 
+    title: Chapter 2
+    subtitle: More Stuff
+  - deuzi says: I've already tweaked the look of the UI a little bit, but we'll need to tweak it more as we go.
+  - deuzi says: We need to add the new mechanics.
+  - deuzi says: We need art assets. Hopefully real sketchy ones as soon as possible.
+  - deuzi says: Some backgrounds, some characters, etc. Oh, and...
+  - show deuzi: happy
+  - goback: gametop
 
 endGame:
   - show street_afternoon:

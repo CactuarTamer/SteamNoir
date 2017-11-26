@@ -16,7 +16,8 @@ var gameTop = {
     RenJS.storyManager.setupStory();
     RenJS.gui.init();
     RenJS.initInput();
-    game.sound.stopAll();
+    _.findWhere(game.sound._sounds, {key:"mainMusic"}).fadeOut(400);
+    //game.sound._sounds[1].fadeOut(400);
     RenJS.audioManager.init(function(){
         RenJS.gui.showMenu("gametop");    
     });

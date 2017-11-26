@@ -8,7 +8,11 @@ setup:
     school_afternoon: assets/backgrounds/school_corridor_afternoon.jpg
     street_morning: assets/backgrounds/school_front_morning.jpg
     street_afternoon: assets/backgrounds/school_front_afternoon.jpg
-    store: assets/backgrounds/store.jpg
+    store: assets/backgrounds/assets/backgrounds/store.jpg
+    docks: assets/backgrounds/liverpool_docks.jpg
+    airship_station: assets/backgrounds/airship_place.jpg
+    factory: assets/backgrounds/factory.jpg
+
   characters:
     deuzi:
       displayName: Cactuar
@@ -89,6 +93,8 @@ setup:
     cicadas: assets/audio/Cicada.mp3
     rain: assets/audio/Rain.mp3
     victoriana: assets/audio/Victoriana_Loop.mp3
+    prose: assets/audio/Penitent_Prose.mp3
+    thunderchild: assets/audio/thunderchild.mp3
   sfx:
     ringtoneSFX: assets/audio/nokia6210-24-elise.mp3
     ringtoneSFX2: assets/audio/alcatel-top_secret.mp3

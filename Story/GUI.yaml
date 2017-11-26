@@ -102,16 +102,18 @@ simpleGUI:
             x: 112
             y: 462
           sprite: proloButton
-        chapter1:  
+        chapter01:
           position:
             x: 320
             y: 462
           sprite: ch1Button
-        chapter2:
+          chapter: Chapter01
+        chapter02:
           position:
             x: 528
             y: 462
-          sprite: ch2Button        
+          sprite: ch2Button
+          chapter: Chapter02     
     main: 
       music: mainMusic
       buttons: 

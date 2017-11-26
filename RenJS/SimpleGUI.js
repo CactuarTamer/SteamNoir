@@ -115,8 +115,14 @@ function SimpleGUI(meta){
             if (!btn.frames){
                 btn.frames = [0,1,0,1];
             }
-            buttons[action] = game.add.button(btn.position.x,btn.position.y,btn.sprite,this.buttonActions[action],
-                this,btn.frames[0],btn.frames[1],btn.frames[2],btn.frames[3],group);
+            if(typeof btn.chapter != "undefined"){
+                buttons[action] = game.add.button(btn.position.x,btn.position.y,btn.sprite,this.buttonActions["indexButton"],
+                    {menu:this,chapter:btn.chapter},btn.frames[0],btn.frames[1],btn.frames[2],btn.frames[3],group);    
+            }else{
+                buttons[action] = game.add.button(btn.position.x,btn.position.y,btn.sprite,this.buttonActions[action],
+                    this,btn.frames[0],btn.frames[1],btn.frames[2],btn.frames[3],group);
+            }
+
         },this);
         return buttons;
     }
@@ -180,6 +186,7 @@ function SimpleGUI(meta){
             config.settings.sfxv = newVal;
         },
     }
+
     //menu actions
     this.buttonActions = {
         start: function(){
@@ -189,10 +196,17 @@ function SimpleGUI(meta){
         },
         prologue: function(){
             console.log("prologue button firing...");
-            console.log(RenJS.gui.currentMenu);
+            //console.log(RenJS.gui.currentMenu);
             RenJS.gui.hideMenu("gametop", false);
             RenJS.gui.showHUD();
-            RenJS.start();
+            RenJS.start("prologue");
+        },
+        indexButton:function(){
+            console.log(this.menu);
+            console.log("index button firing...");
+            RenJS.gui.hideMenu("gametop", false);
+            RenJS.gui.showHUD();
+            RenJS.start(this.chapter);
         },
         load: function(){
             RenJS.gui.hideMenu("main", true);
