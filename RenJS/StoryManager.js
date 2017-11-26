@@ -207,6 +207,7 @@ function StoryManager(){
                     params();
                     break;
                 case "goback" :
+                    RenJS.control.skipping = false;
                     RenJS.storyManager.backToMenu(params);
                     break;
             }
