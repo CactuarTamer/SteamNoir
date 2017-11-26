@@ -41,6 +41,7 @@ prologue:
           - deuzi says: Great! Beatings will continue until morale improves.
   - show deuzi: normal
   - deuzi says: Now, go get familiar with the files!
+  - stop victoriana: WITH FADE
   - goback: gametop
 
 
@@ -63,6 +64,7 @@ Chapter02:
   - deuzi says: We need art assets. Hopefully real sketchy ones as soon as possible.
   - deuzi says: Some backgrounds, some characters, etc. Oh, and...
   - show deuzi: happy
+  - stop thunderchild: WITH FADE
   - goback: gametop
 
 Chapter01:
@@ -84,6 +86,7 @@ Chapter01:
   - deuzi says: We need art assets. Hopefully real sketchy ones as soon as possible.
   - deuzi says: Some backgrounds, some characters, etc. Oh, and...
   - show deuzi: happy
+  - stop prose: WITH FADE
   - goback: gametop
 
 endGame:
