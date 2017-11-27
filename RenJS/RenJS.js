@@ -30,10 +30,10 @@ var RenJS = {
         }
     },
 
-    start: function(){
+    start: function(chapter){
         this.setBlackOverlay();
         RenJS.control.paused = false;
-        RenJS.storyManager.startScene("start");
+        RenJS.storyManager.startScene(chapter);
         this.removeBlackOverlay();
         RenJS.storyManager.interpret();
     },

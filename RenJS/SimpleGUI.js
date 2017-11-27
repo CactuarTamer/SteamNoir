@@ -115,8 +115,14 @@ function SimpleGUI(meta){
             if (!btn.frames){
                 btn.frames = [0,1,0,1];
             }
-            buttons[action] = game.add.button(btn.position.x,btn.position.y,btn.sprite,this.buttonActions[action],
-                this,btn.frames[0],btn.frames[1],btn.frames[2],btn.frames[3],group);
+            if(typeof btn.chapter != "undefined"){
+                buttons[action] = game.add.button(btn.position.x,btn.position.y,btn.sprite,this.buttonActions["indexButton"],
+                    {menu:this,chapter:btn.chapter},btn.frames[0],btn.frames[1],btn.frames[2],btn.frames[3],group);    
+            }else{
+                buttons[action] = game.add.button(btn.position.x,btn.position.y,btn.sprite,this.buttonActions[action],
+                    this,btn.frames[0],btn.frames[1],btn.frames[2],btn.frames[3],group);
+            }
+
         },this);
         return buttons;
     }
@@ -180,15 +186,30 @@ function SimpleGUI(meta){
             config.settings.sfxv = newVal;
         },
     }
+
     //menu actions
     this.buttonActions = {
         start: function(){
-            RenJS.gui.hideMenu();
+            RenJS.gui.hideMenu("main", false);
+            game.state.add("gameTop",gameTop);
+            game.state.start("gameTop");
+        },
+        prologue: function(){
+            console.log("prologue button firing...");
+            //console.log(RenJS.gui.currentMenu);
+            RenJS.gui.hideMenu("gametop", false);
             RenJS.gui.showHUD();
-            RenJS.start();
+            RenJS.start("prologue");
+        },
+        indexButton:function(){
+            console.log(this.menu);
+            console.log("index button firing...");
+            RenJS.gui.hideMenu("gametop", false);
+            RenJS.gui.showHUD();
+            RenJS.start(this.chapter);
         },
         load: function(){
-            RenJS.gui.hideMenu();
+            RenJS.gui.hideMenu("main", true);
             RenJS.load(0);
         },
         auto: RenJS.auto,
@@ -214,10 +235,13 @@ function SimpleGUI(meta){
 
     //show menu
     this.showMenu = function(menu){
+        console.log("Showing menu... "+menu);
         RenJS.pause();
         this.previousMenu = this.currentMenu;
         this.currentMenu = menu;
+        console.log("Current menu is..."+this.currentMenu);
         this.menus[menu].group.visible = true;
+        console.log(this.menus[menu].group);
         game.add.tween(this.menus[menu].group).to( {alpha:1}, 750,null,true);
         if (this.menus[menu].music){
             var music = this.menus[menu].music;
@@ -233,20 +257,36 @@ function SimpleGUI(meta){
     };
 
     //hide menu
-    this.hideMenu = function(menu){  
-        var menu = this.currentMenu;
-        // console.log("hiding "+menu); 
+    this.hideMenu = function(menu, goback = false){  
+        if(!menu || typeof menu == null){
+            var menu = this.currentMenu;
+        }else {
+            //menu is menu
+        }
+        console.log("Hiding menu... "+menu);
+        console.log(this);
         var tween = game.add.tween(this.menus[menu].group).to( {alpha:0}, 400);
         tween.onComplete.add(function(){
             this.menus[menu].group.visible = false;
             this.currentMenu = null;
-            if (this.previousMenu){
-                this.showMenu(this.previousMenu);   
+            if (this.previousMenu && goback){
+                this.showMenu(this.previousMenu);
+                console.log("Going back to previous menu!");   
+            }else{
+                this.currentMenu = menu;
             }
         },this);
+
+
+        var thismusic = this.menus[menu].music;
+
         if (this.menus[menu].music && this.menus[menu].music.ready){
-            this.menus[menu].music.fadeOut(400);
+            //absolutely nothing works
+            console.log("In music fader, fading...");
+            console.log(thismusic);
+            thismusic.fadeOut(400);
         };   
+
         tween.start();
         
     }

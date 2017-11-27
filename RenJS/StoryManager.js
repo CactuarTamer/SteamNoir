@@ -29,6 +29,15 @@ function StoryManager(){
         // this.interpretScene();        
     }
 
+    this.backToMenu = function(menu){
+        RenJS.logicManager.clearChoices(); //For any interrup still showing
+        RenJS.chManager.hideAll();
+        // RenJS.bgManager.hide();
+        RenJS.cgsManager.hideAll();
+        // RenJS.audioManager.stop();
+        RenJS.gui.showMenu(menu); 
+    }
+
     this.getActorType = function(actor){
         // is actor background or character
         if (!actor) {
@@ -196,6 +205,10 @@ function StoryManager(){
                     break;
                 case "jsScript" :
                     params();
+                    break;
+                case "goback" :
+                    RenJS.control.skipping = false;
+                    RenJS.storyManager.backToMenu(params);
                     break;
             }
             
