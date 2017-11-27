@@ -15,6 +15,7 @@ var preload = {
     game.load.script('esprima',  'libs/esprima.js');
     game.load.script('yaml',  'libs/js-yaml.min.js');
     game.load.script('underscore',  'libs/underscore-min.js');
+
     //load RenJS
     game.load.script('Defaults',  'RenJS/Defaults.js');
     game.load.script('SimpleGUI',  'RenJS/SimpleGUI.js');
@@ -64,6 +65,8 @@ var preload = {
     game.state.start('preloadStory');
   }
 }
+
+
 
 var preloadStory = {
   init: function () {
@@ -153,3 +156,59 @@ var init = {
     // }
   }
 }
+
+var preloadChapter = {
+  init: function (chapter) {
+    this.splash = game.add.sprite('splash');
+    this.splash.anchor.set(0.5);
+    this.loadingBar = game.add.sprite("loading");
+  }
+
+  preload: function() {
+    this.load.setPreloadSprite(this.loadingBar);
+
+
+    //preload backgrounds
+    _.each(RenJS.story.setup.backgrounds,function(filename,background){
+        game.load.image(background, filename);
+    });
+    //preload cgs
+    _.each(RenJS.story.setup.cgs,function(filename,background){
+        game.load.image(background, filename);
+    });
+    // preload background music
+    _.each(RenJS.story.setup.music,function(filename,music){
+        game.load.audio(music, filename);
+    });
+    //preload sfx
+    _.each(RenJS.story.setup.sfx,function(filename,key){
+        game.load.audio(key, filename);
+    },this);
+    //preload characters
+    _.each(RenJS.story.setup.characters,function(character,name){
+        _.each(character.looks,function(filename,look){
+            game.load.image(name+"_"+look, filename);
+        });
+    });
+    if (RenJS.story.setup.extra){
+        _.each(RenJS.story.setup.extra,function(assets,type){
+            if (type=="spritesheets"){
+                _.each(assets,function(file,key){
+                    var str = file.split(" ");
+                    game.load.spritesheet(key, str[0], parseInt(str[1]),parseInt(str[2]));
+                });
+            } else {
+                _.each(assets,function(file,key){
+                    // console.log("loading "+key+ " "+file+" of type "+type);
+                    game.load[type](key, file);
+                });
+            }
+        });
+        
+        
+    }
+    
+  }
+}
+
+  

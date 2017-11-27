@@ -10,6 +10,7 @@ var phaserConfig = {
         "Story/GUI.yaml",
         "Story/Setup.yaml",
         "Story/SecondStory.yaml",
+        "Story/SetupII.yaml"
 
     ],
 }

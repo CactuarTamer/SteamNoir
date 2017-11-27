@@ -119,19 +119,19 @@ simpleGUI:
       buttons: 
         start: 
           position:
-            x: 112
-            y: 462
-          sprite: startButton
-        load:  
-          position:
             x: 320
             y: 462
-          sprite: loadButton
-        settings:
-          position:
-            x: 528
-            y: 462
-          sprite: settingsButton
+          sprite: startButton
+        #load:  
+          #position:
+            #x: 320
+            #y: 462
+          #sprite: loadButton
+        #settings:
+          #position:
+            #x: 528
+            #y: 462
+          #sprite: settingsButton
     settings:
       buttons:
         return: 
