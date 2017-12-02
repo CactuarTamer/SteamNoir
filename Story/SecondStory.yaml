@@ -48,44 +48,44 @@ prologue:
 Chapter02:
   - play thunderchild:
   - show airship_station: WITH FADE
-  - show deuzi: happy AT CENTER WITH FADE
-  - deuzi says: Welcome to our Game!
+  - show marco: happy AT CENTER WITH FADE
+  - marco says: Welcome to our Game!
   - call helloworld:
       param1: light
       param2: salad
-  - deuzi says: Of course, it's not OUR game quite yet.
-  - show deuzi: normal
-  - deuzi says: We're gonna have to do a lot of stuff to make it ours.
+  - marco says: Of course, it's not OUR game quite yet.
+  - show marco: normal
+  - marco says: We're gonna have to do a lot of stuff to make it ours.
   - effect SHOWTITLE: 
     title: Chapter 2
     subtitle: Here's some more uplifting music.
-  - deuzi says: I've already tweaked the look of the UI a little bit, but we'll need to tweak it more as we go.
-  - deuzi says: We need to add the new mechanics.
-  - deuzi says: We need art assets. Hopefully real sketchy ones as soon as possible.
-  - deuzi says: Some backgrounds, some characters, etc. Oh, and...
-  - show deuzi: happy
+  - marco says: I've already tweaked the look of the UI a little bit, but we'll need to tweak it more as we go.
+  - marco says: We need to add the new mechanics.
+  - marco says: We need art assets. Hopefully real sketchy ones as soon as possible.
+  - marco says: Some backgrounds, some characters, etc. Oh, and...
+  - show marco: happy
   - stop thunderchild: WITH FADE
   - goback: gametop
 
 Chapter01:
   - play prose:
   - show factory: WITH FADE
-  - show deuzi: happy AT CENTER WITH FADE
-  - deuzi says: Welcome to our Game!
+  - show liz: happy AT CENTER WITH FADE
+  - liz says: Welcome to our Game!
   - call helloworld:
       param1: light
       param2: salad
-  - deuzi says: Of course, it's not OUR game quite yet.
-  - show deuzi: normal
-  - deuzi says: We're gonna have to do a lot of stuff to make it ours.
+  - liz says: Of course, it's not OUR game quite yet.
+  - show liz: normal
+  - liz says: We're gonna have to do a lot of stuff to make it ours.
   - effect SHOWTITLE: 
     title: Chapter 2
     subtitle: More Stuff
-  - deuzi says: I've already tweaked the look of the UI a little bit, but we'll need to tweak it more as we go.
-  - deuzi says: We need to add the new mechanics.
-  - deuzi says: We need art assets. Hopefully real sketchy ones as soon as possible.
-  - deuzi says: Some backgrounds, some characters, etc. Oh, and...
-  - show deuzi: happy
+  - liz says: I've already tweaked the look of the UI a little bit, but we'll need to tweak it more as we go.
+  - liz says: We need to add the new mechanics.
+  - liz says: We need art assets. Hopefully real sketchy ones as soon as possible.
+  - liz says: Some backgrounds, some characters, etc. Oh, and...
+  - show liz: happy
   - stop prose: WITH FADE
   - goback: gametop
 

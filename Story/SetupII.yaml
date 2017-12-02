@@ -1,5 +1,23 @@
-perchapter:
+chIndex:
   prologue:
-    backgrounds:
-    characters:
-    
+    backgrounds: [docks]
+    characters: [deuzi]
+    music: [victoriana]
+    extra:
+      images: [title]
+    scenes: [prologue]
+  Chapter02:
+    backgrounds: [airship_station]
+    characters: [marco]
+    music: [thunderchild]
+    extra:
+      images: [title]
+  Chapter01:
+    backgrounds: [factory]
+    characters: [liz]
+    music: [prose]
+    extra:
+      images: [title]
+
+  
+      

@@ -11,6 +11,8 @@ function SimpleGUI(meta){
         });
         assets = _.union(assets,list);
         list = _.map(this.elements.assets.audio,function(asset,key){
+            //dont't load duplicates of music
+            
             return {key:key, file:asset, type: "audio"};
         });
         assets = _.union(assets,list);
@@ -198,15 +200,16 @@ function SimpleGUI(meta){
             console.log("prologue button firing...");
             //console.log(RenJS.gui.currentMenu);
             RenJS.gui.hideMenu("gametop", false);
-            RenJS.gui.showHUD();
-            RenJS.start("prologue");
+            game.state.add('gameWorld',gameWorld);
+            game.state.start('gameWorld',true,false,"prologue");
+
         },
         indexButton:function(){
             console.log(this.menu);
             console.log("index button firing...");
-            RenJS.gui.hideMenu("gametop", false);
-            RenJS.gui.showHUD();
-            RenJS.start(this.chapter);
+
+            game.state.add('gameWorld',gameWorld);
+            game.state.start('gameWorld',true,false,this.chapter);
         },
         load: function(){
             RenJS.gui.hideMenu("main", true);
@@ -284,6 +287,7 @@ function SimpleGUI(meta){
             //absolutely nothing works
             console.log("In music fader, fading...");
             console.log(thismusic);
+            _.findWhere(game.sound._sounds, {key:thismusic.key}).fadeOut(400);
             thismusic.fadeOut(400);
         };   
 

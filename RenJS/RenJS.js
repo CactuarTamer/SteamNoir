@@ -35,6 +35,7 @@ var RenJS = {
         RenJS.control.paused = false;
         RenJS.storyManager.startScene(chapter);
         this.removeBlackOverlay();
+        console.log(RenJS.control);
         RenJS.storyManager.interpret();
     },
 
