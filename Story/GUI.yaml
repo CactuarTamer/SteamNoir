@@ -29,6 +29,7 @@ simpleGUI:
       choice: assets/gui/choice.png 716 65
       interrupt: assets/gui/interrupt.png 716 95
     audio:
+      victoriana: assets/audio/Victoriana_Loop.mp3
       mainMusic: assets/audio/Evan_Schaeffer_-_01_-_Aqueduct.mp3
   hud:
     area:
@@ -119,19 +120,19 @@ simpleGUI:
       buttons: 
         start: 
           position:
-            x: 112
-            y: 462
-          sprite: startButton
-        load:  
-          position:
             x: 320
             y: 462
-          sprite: loadButton
-        settings:
-          position:
-            x: 528
-            y: 462
-          sprite: settingsButton
+          sprite: startButton
+        #load:  
+          #position:
+            #x: 320
+            #y: 462
+          #sprite: loadButton
+        #settings:
+          #position:
+            #x: 528
+            #y: 462
+          #sprite: settingsButton
     settings:
       buttons:
         return: 

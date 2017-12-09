@@ -31,6 +31,17 @@ var preload = {
     game.load.script('Ambient',  'RenJS/Ambient.js');
     game.load.script('Transitions',  'RenJS/Transitions.js');
     game.load.script('CustomContent',  'RenJS/CustomContent.js');
+
+    //load custom stuff I guess
+    game.load.script('GameWorld', 'RenJS/GameWorld.js');
+    game.load.script('GameStartSplash', 'RenJS/GameStartSplash.js');
+    game.load.script('GameTop','RenJS/GameTop.js')
+    game.load.script('InputField','node_modules/@orange-games/phaser-input/build/phaser-input.js');
+
+
+    //plugins I added. I guess.
+    game.add.plugin(PhaserInput.Plugin);
+
     //load Story Files
     for (var i = phaserConfig.storyFiles.length - 1; i >= 0; i--) {
       game.load.text("story"+i, phaserConfig.storyFiles[i]);
@@ -75,32 +86,32 @@ var preloadStory = {
 
   preload: function () {
     this.load.setPreloadSprite(this.loadingBar);
-    //preload gui
+    /*preload gui
     _.each(RenJS.gui.getAssets(),function(asset){
         // console.log(asset);
         if (asset.type == "spritesheet"){
             game.load.spritesheet(asset.key, asset.file, asset.w, asset.h);
         } else {
-            game.load[asset.type](asset.key, asset.file);
+           game.load[asset.type](asset.key, asset.file);
         }
-    });
+    }); */
 
     //preload backgrounds
-    _.each(RenJS.story.setup.backgrounds,function(filename,background){
-        game.load.image(background, filename);
-    });
+    //_.each(RenJS.story.setup.backgrounds,function(filename,background){
+    //    game.load.image(background, filename);
+    //});
     //preload cgs
     _.each(RenJS.story.setup.cgs,function(filename,background){
         game.load.image(background, filename);
     });
-    // preload background music
-    _.each(RenJS.story.setup.music,function(filename,music){
-        game.load.audio(music, filename);
-    });
+    //preload background music
+    //_.each(RenJS.story.setup.music,function(filename,music){
+    //    game.load.audio(music, filename);
+    // });
     //preload sfx
-    _.each(RenJS.story.setup.sfx,function(filename,key){
-        game.load.audio(key, filename);
-    },this);
+    //_.each(RenJS.story.setup.sfx,function(filename,key){
+    //    game.load.audio(key, filename);
+    //},this);
     //preload characters
     _.each(RenJS.story.setup.characters,function(character,name){
         _.each(character.looks,function(filename,look){
@@ -129,6 +140,9 @@ var preloadStory = {
 
   create: function() {
     //init game and start main menu
+    game.state.add('gameTop',gameTop);
+    game.state.add('gameWorld',gameWorld);
+    game.state.add('gameStartSplash', gameStartSplash);
     game.state.add('init', init);
     game.state.start('init');
   }
@@ -139,9 +153,10 @@ var init = {
     RenJS.gui.init();
     RenJS.initInput();
     RenJS.audioManager.init(function(){
-        RenJS.gui.showMenu("main"); 
+        game.state.start('gameStartSplash');
+        //RenJS.gui.showMenu("main"); 
         console.log(RenJS.audioManager);   
-    });
+    },false);
 
   },
 
@@ -153,3 +168,4 @@ var init = {
     // }
   }
 }
+

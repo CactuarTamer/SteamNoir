@@ -33,9 +33,19 @@ function StoryManager(){
         RenJS.logicManager.clearChoices(); //For any interrup still showing
         RenJS.chManager.hideAll();
         // RenJS.bgManager.hide();
+        //console.log("The thing in the StoryManager"); 
+        //debugger;
+        var isPlaying = _.findWhere(game.sound._sounds, {isPlaying:true});
+        if(isPlaying && typeof isPlaying != "undefined"){
+          isPlaying.fadeOut(400);
+          //_.findWhere(game.sound._sounds, {isPlaying:true}).fadeOut(400);
+        }else{
+            game.sound.stopAll();
+        }
         RenJS.cgsManager.hideAll();
-        // RenJS.audioManager.stop();
-        RenJS.gui.showMenu(menu); 
+        RenJS.audioManager.stop();
+        //RenJS.gui.showMenu(menu); 
+        game.state.start(menu);
     }
 
     this.getActorType = function(actor){
@@ -182,6 +192,8 @@ function StoryManager(){
                     break;
                 case "play" :
                     // debugger;
+                    console.log("In PLAY");
+                    console.log(actor);
                     if (actorType == "bgm"){
                         RenJS.audioManager.play(actor, "bgm", action.looped, action.transitionName);
                     } else {
