@@ -36,7 +36,8 @@ function StoryManager(){
         _.findWhere(game.sound._sounds, {isPlaying:true}).fadeOut(400);
         RenJS.cgsManager.hideAll();
         RenJS.audioManager.stop();
-        RenJS.gui.showMenu(menu); 
+        //RenJS.gui.showMenu(menu); 
+        game.state.start(menu);
     }
 
     this.getActorType = function(actor){

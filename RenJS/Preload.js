@@ -34,6 +34,8 @@ var preload = {
 
     //load custom stuff I guess
     game.load.script('GameWorld', 'RenJS/GameWorld.js');
+    game.load.script('GameStartSplash', 'RenJS/GameStartSplash.js');
+    game.load.script('GameTop','RenJS/GameTop.js')
 
     //load Story Files
     for (var i = phaserConfig.storyFiles.length - 1; i >= 0; i--) {
@@ -80,14 +82,14 @@ var preloadStory = {
   preload: function () {
     this.load.setPreloadSprite(this.loadingBar);
     //preload gui
-    _.each(RenJS.gui.getAssets(),function(asset){
-        // console.log(asset);
-        if (asset.type == "spritesheet"){
-            game.load.spritesheet(asset.key, asset.file, asset.w, asset.h);
-        } else {
-           game.load[asset.type](asset.key, asset.file);
-        }
-    });
+    //_.each(RenJS.gui.getAssets(),function(asset){
+    //    // console.log(asset);
+    //    if (asset.type == "spritesheet"){
+    //        game.load.spritesheet(asset.key, asset.file, asset.w, asset.h);
+    //    } else {
+    //       game.load[asset.type](asset.key, asset.file);
+    //    }
+    //});
 
     //preload backgrounds
     //_.each(RenJS.story.setup.backgrounds,function(filename,background){
@@ -133,6 +135,9 @@ var preloadStory = {
 
   create: function() {
     //init game and start main menu
+    game.state.add('gameTop',gameTop);
+    game.state.add('gameWorld',gameWorld);
+    game.state.add('gameStartSplash', gameStartSplash);
     game.state.add('init', init);
     game.state.start('init');
   }
@@ -143,7 +148,8 @@ var init = {
     RenJS.gui.init();
     RenJS.initInput();
     RenJS.audioManager.init(function(){
-        RenJS.gui.showMenu("main"); 
+        game.state.start('gameStartSplash');
+        //RenJS.gui.showMenu("main"); 
         console.log(RenJS.audioManager);   
     },false);
 

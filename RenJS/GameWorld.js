@@ -103,7 +103,7 @@ var gameWorld = {
   startChapter: function() {
     
     RenJS.gui.hideMenu("gametop", false);
-    
+    RenJS.storyManager.setupStory();
     RenJS.gui.init();
     RenJS.initInput();
     

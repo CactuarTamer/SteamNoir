@@ -193,14 +193,14 @@ function SimpleGUI(meta){
     this.buttonActions = {
         start: function(){
             RenJS.gui.hideMenu("main", false);
-            game.state.add("gameTop",gameTop);
+            //game.state.add("gameTop",gameTop);
             game.state.start("gameTop");
         },
         prologue: function(){
             console.log("prologue button firing...");
             //console.log(RenJS.gui.currentMenu);
             RenJS.gui.hideMenu("gametop", false);
-            game.state.add('gameWorld',gameWorld);
+            
             game.state.start('gameWorld',true,false,"prologue");
 
         },
@@ -208,7 +208,7 @@ function SimpleGUI(meta){
             console.log(this.menu);
             console.log("index button firing...");
 
-            game.state.add('gameWorld',gameWorld);
+            //game.state.add('gameWorld',gameWorld);
             game.state.start('gameWorld',true,false,this.chapter);
         },
         load: function(){

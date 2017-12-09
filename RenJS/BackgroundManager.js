@@ -21,8 +21,9 @@ function BackgroundManager(){
     this.show = function(name,transition){   
         var oldBg = this.current;
         this.current = name ? this.backgrounds[name] : null;
-        // console.log("showing bg "+name);
+        console.log("showing bg "+name);
         // debugger;
+        console.log(this.current);
         transition(oldBg,this.current,{x:game.world.centerX,y:game.world.centerY},1,RenJS.storyManager.backgroundSprites);        
     }
 

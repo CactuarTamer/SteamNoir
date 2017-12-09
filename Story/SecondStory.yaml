@@ -42,7 +42,7 @@ prologue:
   - show deuzi: normal
   - deuzi says: Now, go get familiar with the files!
   - stop victoriana: WITH FADE
-  - goback: gametop
+  - goback: gameTop
 
 
 Chapter02:
@@ -65,7 +65,7 @@ Chapter02:
   - marco says: Some backgrounds, some characters, etc. Oh, and...
   - show marco: happy
   - stop thunderchild: WITH FADE
-  - goback: gametop
+  - goback: gameTop
 
 Chapter01:
   - play prose:
@@ -87,7 +87,7 @@ Chapter01:
   - liz says: Some backgrounds, some characters, etc. Oh, and...
   - show liz: happy
   - stop prose: WITH FADE
-  - goback: gametop
+  - goback: gameTop
 
 endGame:
   - show street_afternoon:
