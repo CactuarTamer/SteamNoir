@@ -1,5 +1,7 @@
+/*
 var defaults = {
     //name of the game
+
     name: "RenJS-GAME",
     
     defaultTextStyle: {
@@ -45,4 +47,4 @@ var defaults = {
         bgm: "FADE"
     }
 
-}
+} */

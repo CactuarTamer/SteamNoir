@@ -36,6 +36,11 @@ var preload = {
     game.load.script('GameWorld', 'RenJS/GameWorld.js');
     game.load.script('GameStartSplash', 'RenJS/GameStartSplash.js');
     game.load.script('GameTop','RenJS/GameTop.js')
+    game.load.script('InputField','node_modules/@orange-games/phaser-input/build/phaser-input.js');
+
+
+    //plugins I added. I guess.
+    game.add.plugin(PhaserInput.Plugin);
 
     //load Story Files
     for (var i = phaserConfig.storyFiles.length - 1; i >= 0; i--) {
@@ -81,15 +86,15 @@ var preloadStory = {
 
   preload: function () {
     this.load.setPreloadSprite(this.loadingBar);
-    //preload gui
-    //_.each(RenJS.gui.getAssets(),function(asset){
-    //    // console.log(asset);
-    //    if (asset.type == "spritesheet"){
-    //        game.load.spritesheet(asset.key, asset.file, asset.w, asset.h);
-    //    } else {
-    //       game.load[asset.type](asset.key, asset.file);
-    //    }
-    //});
+    /*preload gui
+    _.each(RenJS.gui.getAssets(),function(asset){
+        // console.log(asset);
+        if (asset.type == "spritesheet"){
+            game.load.spritesheet(asset.key, asset.file, asset.w, asset.h);
+        } else {
+           game.load[asset.type](asset.key, asset.file);
+        }
+    }); */
 
     //preload backgrounds
     //_.each(RenJS.story.setup.backgrounds,function(filename,background){

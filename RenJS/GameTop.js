@@ -26,7 +26,16 @@ var gameTop = {
     RenJS.storyManager.setupStory();
     RenJS.gui.init();
     RenJS.initInput();
-    _.findWhere(game.sound._sounds, {isPlaying:true}).fadeOut(400);
+    console.log("The thing in GameTop");
+    //debugger;
+    var isPlaying = _.findWhere(game.sound._sounds, {isPlaying:true});
+    if(isPlaying && typeof isPlaying != "undefined"){
+      isPlaying.fadeOut(400);
+      //_.findWhere(game.sound._sounds, {isPlaying:true}).fadeOut(400);
+    }else{
+      game.sound.stopAll();
+    }
+    
     //
 
     //game.sound._sounds[1].fadeOut(400);

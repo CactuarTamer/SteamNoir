@@ -33,7 +33,15 @@ function StoryManager(){
         RenJS.logicManager.clearChoices(); //For any interrup still showing
         RenJS.chManager.hideAll();
         // RenJS.bgManager.hide();
-        _.findWhere(game.sound._sounds, {isPlaying:true}).fadeOut(400);
+        //console.log("The thing in the StoryManager"); 
+        //debugger;
+        var isPlaying = _.findWhere(game.sound._sounds, {isPlaying:true});
+        if(isPlaying && typeof isPlaying != "undefined"){
+          isPlaying.fadeOut(400);
+          //_.findWhere(game.sound._sounds, {isPlaying:true}).fadeOut(400);
+        }else{
+            game.sound.stopAll();
+        }
         RenJS.cgsManager.hideAll();
         RenJS.audioManager.stop();
         //RenJS.gui.showMenu(menu); 
