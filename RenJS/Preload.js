@@ -40,7 +40,7 @@ var preload = {
 
 
     //plugins I added. I guess.
-    game.add.plugin(PhaserInput.Plugin);
+    //game.add.plugin(PhaserInput.Plugin);
 
     //load Story Files
     for (var i = phaserConfig.storyFiles.length - 1; i >= 0; i--) {
