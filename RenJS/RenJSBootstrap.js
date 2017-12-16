@@ -1,10 +1,11 @@
-
+///window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRati
 var phaserConfig = {
-  w:800,
-  h:600,
+  w:1280,
+  h:720,
   mode: "AUTO",
   splash: "assets/gui/splash.png", //splash background
   loading: "assets/gui/loadingbar.png", //loading bar image
+  landscape: "assets/resources/playlandscape.png", //screenlock image
   loadingPosition: [111,462], //loading bar size
   storyFiles: [
         "Story/YourStory.yaml",
@@ -70,7 +71,19 @@ var game = new Phaser.Game(phaserConfig.w, phaserConfig.h, Phaser[phaserConfig.m
 
 var bootstrap = {
 
+  init: function() {
+    //game.scale.
+    game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    game.scale.windowConstraints.bottom = "visual";
+
+    game.scale.forceOrientation(true,false);
+    game.scale.enterIncorrectOrientation.add(handleIncorrect);
+    game.scale.leaveIncorrectOrientation.add(handleCorrect);
+
+  },
+
   preload: function () {
+    game.load.image('landscape', phaserConfig.landscape);
     game.load.image('loading',  phaserConfig.loading);
     game.load.image('splash',  phaserConfig.splash);
     //game.load.script('defaults', 'RenJS/Defaults.js');
@@ -83,6 +96,18 @@ var bootstrap = {
   }
 
 };
+
+function handleIncorrect(){
+  if(!game.device.desktop){
+    document.getElementById("turn").style.display = "block";
+  }
+}
+
+function handleCorrect(){
+  if(!game.device.desktop){
+    document.getElementById("turn").style.display = "none";
+  }
+}
 
 game.state.add('bootstrap', bootstrap);
 game.state.start('bootstrap');
