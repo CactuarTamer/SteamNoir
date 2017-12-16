@@ -49,13 +49,17 @@ Chapter02:
   - play thunderchild:
   - show airship_station: WITH FADE
   - show marco: happy AT CENTER WITH FADE
+  - show mc: happy AT RIGHT WITH FADE
   - marco says: Welcome to our Game!
+  - mc says: Yeah welcome to our game!
   - call helloworld:
       param1: light
       param2: salad
   - marco says: Of course, it's not OUR game quite yet.
+  - mc says: It's definitely our game. 
   - show marco: normal
   - marco says: We're gonna have to do a lot of stuff to make it ours.
+  - mc says: We added a sprite so we're basically done now. 
   - effect SHOWTITLE: 
     title: Chapter 2
     subtitle: Here's some more uplifting music.

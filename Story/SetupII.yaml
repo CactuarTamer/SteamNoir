@@ -8,7 +8,7 @@ chIndex:
     scenes: [prologue]
   Chapter02:
     backgrounds: [airship_station]
-    characters: [marco]
+    characters: [marco, mc]
     music: [thunderchild]
     extra:
       images: [title]

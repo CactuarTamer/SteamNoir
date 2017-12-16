@@ -14,6 +14,16 @@ setup:
     factory: assets/backgrounds/factory.jpg
 
   characters:
+    mc:
+      displayName: Ada
+      speechColour: "#000000"
+      looks:
+        #normal: assets/characters/Char3NormalSchool.png
+        happy: assets/characters/MCHappy.png
+        #angry: assets/characters/Char3AngrySchool.png
+        #normalC: assets/characters/Char3Normal.png
+        #happyC: assets/characters/Char3Happy.png
+        #angryC: assets/characters/Char3Angry.png
     deuzi:
       displayName: Cactuar
       speechColour: "#000000"
