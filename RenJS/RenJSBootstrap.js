@@ -1,4 +1,6 @@
 ///window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRati
+var scaleH = 240;
+var scaleV = 60;
 var phaserConfig = {
   w:1280,
   h:720,
@@ -6,7 +8,7 @@ var phaserConfig = {
   splash: "assets/gui/splash.png", //splash background
   loading: "assets/gui/loadingbar.png", //loading bar image
   landscape: "assets/resources/playlandscape.png", //screenlock image
-  loadingPosition: [111,462], //loading bar size
+  loadingPosition: [111+scaleH,462+scaleV], //loading bar size
   storyFiles: [
         "Story/YourStory.yaml",
         "Story/GUI.yaml",

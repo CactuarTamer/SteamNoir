@@ -55,10 +55,10 @@ function SimpleGUI(meta){
         _.each(this.elements.hud.area,function(area){
             var a = area.split(" ");
             // debugger;
-            var x = parseInt(a[0]);
-            var y = parseInt(a[1]);
-            var w = parseInt(a[2])-x;
-            var h = parseInt(a[3])-y;
+            var x = parseInt(a[0])+240;
+            var y = parseInt(a[1])+60;
+            var w = parseInt(a[2])-(x+240);
+            var h = parseInt(a[3])-(y+60);
             this.hud.area.push(new Phaser.Rectangle(x,y,w,h));
         },this);
         this.hud.group.visible = false;
