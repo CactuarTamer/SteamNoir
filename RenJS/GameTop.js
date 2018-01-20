@@ -37,12 +37,12 @@ var gameTop = {
     }
     
     //
-
+    RenJS.gui.showMenu("gametop");
     //game.sound._sounds[1].fadeOut(400);
-    RenJS.audioManager.init(function(){
-        RenJS.gui.showMenu("gametop"); 
-        //RenJS.gui.showMenu("main");   
-    },false);
+    //RenJS.audioManager.init(function(){
+    //    RenJS.gui.showMenu("gametop"); 
+    //    //RenJS.gui.showMenu("main");   
+    //},false);
   	console.log("Gametop Top");
   	console.log("In Gametop create, current menu is..."+RenJS.gui.currentMenu);
   }
