@@ -202,6 +202,7 @@ function StoryManager(){
                     }
                     break;
                 case "stop" :
+                    //this will trigger a game-breaking bug if there is no music actually playing.
                     RenJS.audioManager.stop("bgm",action.transitionName);
                 case "effect" :
                     RenJS.effects[actor](action);

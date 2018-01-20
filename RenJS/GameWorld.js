@@ -30,7 +30,7 @@ var gameWorld = {
       //console.log(filename);
       console.log(music)
       console.log(RenJS.story.setup.music[music]);
-      this.chapterAudio.music.push(RenJS.story.setup.music[music]);
+      this.chapterAudio.music.push(music);
       game.load.audio(music, RenJS.story.setup.music[music]);
     },this);
 
@@ -42,7 +42,7 @@ var gameWorld = {
 
     _.each(RenJS.story.chIndex[this.chapter].sfx,function(sfx){
         console.log("Inside per-chapter sfx loader");
-        this.chapterAudio.sfx.push(RenJS.story.setup.sfx[sfx]);
+        this.chapterAudio.sfx.push(sfx);
         game.load.audio(sfx, RenJS.story.setup.sfx[sfx]);
 
     },this);

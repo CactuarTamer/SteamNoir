@@ -137,12 +137,44 @@ function SimpleGUI(meta){
         this.menus[name].group.visible = false;
 
         this.menus[name].background = game.add.image(0,0,name+"Background",0,this.menus[name].group);
-        if (menu.music && !config.settings.muted){
-            this.menus[name].music = game.add.audio(menu.music);
+
+
+
+        console.log("in initMenu, about to add music");
+        console.log(name);
+        console.log(menu);
+        console.log(this.menus[name]);
+
+        if (typeof menu.music != "undefined" && !config.settings.muted){
+            console.log("actually inside music-adder");
+            var musicExists = _.find(game.sound._sounds, function(soundd){
+                return soundd.key == menu.music;
+            });
+            console.log(musicExists);
+            console.log(typeof musicExists);
+            console.log("--------------------------------------");
+            //console.log(typeof musicExists != undefined);
+            //console.log(typeof musicExists !== "undefined");
+            //console.log(typeof musicExists !== undefined);
+            console.log(typeof musicExists !== "undefined");
+            console.log("--------------------------------------");           
+            if(typeof musicExists !== "undefined"){
+                console.log("that music already exists.");
+                console.log(musicExists);
+                this.menus[name].music = musicExists;
+                console.log(this.menus[name].music);
+
+            }else{
+                this.menus[name].music = game.add.audio(menu.music);
+            }
+
             this.menus[name].music.onDecoded.add(function(){
                 this.menus[name].music.ready = true;
-            }, this);
+            }, this);           
+
         };
+
+
         this.menus[name].buttons = this.initButtons(menu.buttons,this.menus[name].group);
         this.initSliders(menu.sliders,this.menus[name].group);
 
@@ -246,12 +278,26 @@ function SimpleGUI(meta){
         this.menus[menu].group.visible = true;
         console.log(this.menus[menu].group);
         game.add.tween(this.menus[menu].group).to( {alpha:1}, 750,null,true);
+
         if (this.menus[menu].music){
             var music = this.menus[menu].music;
+            console.log("In show menu music handler");
+            console.log(music);
+            //debugger;
             if (music.ready){
-                music.fadeIn(1000);    
+                if(!music.isPlaying){
+                    console.log("Music is ready, isPlaying is ..."+music.isPlaying);
+                    music.fadeIn(1000);
+                    music.volume = 1;
+                }else{
+                    console.log("music is ready, volume is... ");
+                    music.fadeTo(1000, 1);
+                }
+                
+                    
             } else {
                setTimeout(function() {
+                 console.log("music is not ready, fade in in a bit I guess");
                  music.fadeIn(1000);
                }, 1000); 
             }
