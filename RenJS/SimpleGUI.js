@@ -282,10 +282,18 @@ function SimpleGUI(meta){
                 if(!music.isPlaying){
                     console.log("Music is ready, isPlaying is ..."+music.isPlaying);
                     music.fadeIn(1000);
+                    RenJS.audioManager.historyUpdate(music.name);
                     music.volume = 1;
                 }else{
                     console.log("music is ready, volume is... ");
-                    music.fadeTo(1000, 1);
+                    console.log("gonna fade out for a bit.");
+                    music.fadeOut(750);
+                    setTimeout(function() {
+                     console.log("aaand fading back in.");
+                     music.fadeIn(750);
+                     RenJS.audioManager.historyUpdate(music.name);
+                   }, 500); 
+                    //music.fadeTo(1000, 1);
                 }
                 
                     
@@ -293,6 +301,7 @@ function SimpleGUI(meta){
                setTimeout(function() {
                  console.log("music is not ready, fade in in a bit I guess");
                  music.fadeIn(1000);
+                 RenJS.audioManager.historyUpdate(music.name);
                }, 1000); 
             }
             
