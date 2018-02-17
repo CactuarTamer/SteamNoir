@@ -135,41 +135,35 @@ function SimpleGUI(meta){
         };
         // this.menus[name].group.alpha = 0;
         this.menus[name].group.visible = false;
-
         this.menus[name].background = game.add.image(0,0,name+"Background",0,this.menus[name].group);
 
-
-
         console.log("in initMenu, about to add music");
-        console.log(name);
-        console.log(menu);
-        console.log(this.menus[name]);
 
         if (typeof menu.music != "undefined" && !config.settings.muted){
             console.log("actually inside music-adder");
             var musicExists = _.find(game.sound._sounds, function(soundd){
                 return soundd.key == menu.music;
             });
-            console.log(musicExists);
-            console.log(typeof musicExists);
-            console.log("--------------------------------------");
-            //console.log(typeof musicExists != undefined);
-            //console.log(typeof musicExists !== "undefined");
-            //console.log(typeof musicExists !== undefined);
-            console.log(typeof musicExists !== "undefined");
-            console.log("--------------------------------------");           
+         
+            //if already exists, set music object to pre-existing object
             if(typeof musicExists !== "undefined"){
                 console.log("that music already exists.");
-                console.log(musicExists);
-                this.menus[name].music = musicExists;
-                console.log(this.menus[name].music);
-
+                //console.log(musicExists);
+                this.menus[name].music = RenJS.audioManager.musicList[musicExists.name];
             }else{
-                this.menus[name].music = game.add.audio(menu.music);
+                console.log(menu.music);
+                console.log(typeof menu.music);
+                RenJS.audioManager.musicList[menu.music] = game.add.audio(menu.music);
+                this.menus[name].music = RenJS.audioManager.musicList[menu.music];
             }
-
+                //this.menus[name].music = game.add.audio(menu.music);}
+                //debugger;
+                //RenJS.audioManager.musicList[this.menus[name].
+                //debugger;
+                //console.log(this.menus[name].music);
             this.menus[name].music.onDecoded.add(function(){
                 this.menus[name].music.ready = true;
+                RenJS.audioManager.current.bgm = true;
             }, this);           
 
         };

@@ -91,7 +91,8 @@ var gameWorld = {
     }else{
         game.sound.stopAll();
     }
-    RenJS.audioManager.init(function(){console.log("Audio Iniiiiit");},this.chapterAudio);
+    RenJS.audioManager.load(function(){console.log("Audio LOAD");},this.chapterAudio);
+    //RenJS.audioManager.init(function(){console.log("Audio Iniiiiit");},this.chapterAudio);
     this.startChapter();
     
     //game.sound._sounds[1].fadeOut(400);

@@ -10,6 +10,59 @@ function AudioManager(){
         bgs : null
     }
 
+
+    this.load = function(callback, toLoad, chapter){
+        //stuff goes here
+        console.log("maybe separate from init?");
+        var audioList = [];
+        console.log("inside audio manager LOAD");
+        console.log(RenJS.story.setup.music);
+        console.log(game.sound);
+
+        console.log("Okay. so already loaded in sound._sounds are...");
+        var alreadyInSounds = game.sound._sounds.map(a => a.key);
+        console.log(alreadyInSounds);
+
+        console.log("first, playing sounds.");
+        var playingsounds = _.where(game.sound._sounds, {isPlaying: true});
+        console.log(playingsounds);
+
+
+        console.log("Woo, now we're going to load....");
+        var chapterMusic = toLoad.music;
+        console.log(chapterMusic);
+
+
+        console.log("Find unloaded?");
+        var unloadedMusic = _.difference(chapterMusic, alreadyInSounds);
+        console.log(unloadedMusic);
+
+        console.log("okies now check out the story thing");
+        console.log(RenJS.story.setup.music);
+
+        _.each(RenJS.story.setup.music,function(filename,key){
+            console.log("hello now we are looping");
+            if(_.contains(unloadedMusic, key)){
+                console.log("Filename (unloaded) is ...."+filename+" Key is..."+key);
+                console.log(this.musicList);
+                RenJS.audioManager.musicList[key] = game.add.audio(key);
+                console.log(game.sound._sounds);
+            }else{
+                console.log(key+" is already loaded");
+            }
+
+        callback(chapter);
+
+        });
+
+
+
+
+
+
+
+    }
+
     this.init = function(callback, toLoad, chapter){
         var audioList = [];
         console.log("inside audio manager init");
