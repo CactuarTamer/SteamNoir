@@ -32,31 +32,34 @@ simpleGUI:
       victoriana: assets/audio/Victoriana_Loop.mp3
       mainMusic: assets/audio/Evan_Schaeffer_-_01_-_Aqueduct.mp3
   hud:
+    scaleAdjust:
+      h: 240
+      v: 60
     area:
       - 640 450 748 554
     message:
       position: 
-        x: 46 
-        y: 435
+        x: 200
+        y: 550
       textPosition: 
-        x: 36 
+        x: 76 
         y: 36
       textStyle:
-        font: 16pt Glass Antiqua
+        font: 18pt Glass Antiqua
         wordWrap: true
-        wordWrapWidth: 545
+        wordWrapWidth: 700
         fill: "#ac9393"
     name:
       position: 
         x: 36 
         y: -40
       textStyle:
-        font: 20pt 'Glass Antiqua'
+        font: 22pt 'Glass Antiqua'
         boundsAlignH: center
         boundsAlignV: middle
     ctc: 
       position:
-        x: 570 
+        x: 710 
         y: 90
       animated: false
     choice:
@@ -75,23 +78,23 @@ simpleGUI:
     buttons:
       auto: 
         position:
-          x: 647
-          y: 502
+          x: 947
+          y: 622
         sprite: qmAutoButton
       skip: 
         position:
-          x: 694
-          y: 502
+          x: 994
+          y: 622
         sprite: qmSkipButton
       save: 
         position:
-          x: 694
-          y: 457
+          x: 994
+          y: 577
         sprite: qmSaveButton
       settings: 
         position:
-          x: 647
-          y: 457
+          x: 947
+          y: 577
         sprite: qmSettingsButton
       # mute: qmMuteButton 1175 60
   menus:
@@ -100,19 +103,19 @@ simpleGUI:
       buttons:
         prologue: 
           position:
-            x: 112
-            y: 462
+            x: 352
+            y: 522
           sprite: proloButton
         chapter01:
           position:
-            x: 320
-            y: 462
+            x: 560
+            y: 522
           sprite: ch1Button
           chapter: Chapter01
         chapter02:
           position:
-            x: 528
-            y: 462
+            x: 768
+            y: 522
           sprite: ch2Button
           chapter: Chapter02     
     main: 
@@ -120,8 +123,8 @@ simpleGUI:
       buttons: 
         start: 
           position:
-            x: 320
-            y: 462
+            x: 560
+            y: 522
           sprite: startButton
         #load:  
           #position:

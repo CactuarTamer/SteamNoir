@@ -194,15 +194,20 @@ function StoryManager(){
                     // debugger;
                     console.log("In PLAY");
                     console.log(actor);
+                    console.log(actorType);
                     if (actorType == "bgm"){
+                        console.log("playing bgm");
                         RenJS.audioManager.play(actor, "bgm", action.looped, action.transitionName);
                     } else {
+                        console.log("playing sfx");
                         RenJS.audioManager.playSFX(actor);
                         RenJS.resolve();
                     }
                     break;
                 case "stop" :
+                    //this will trigger a game-breaking bug if there is no music actually playing.
                     RenJS.audioManager.stop("bgm",action.transitionName);
+                    break;
                 case "effect" :
                     RenJS.effects[actor](action);
                     break;

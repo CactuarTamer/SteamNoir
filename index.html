@@ -5,6 +5,12 @@
 		<meta charset="utf-8" />
 		<title> RenJS - TEST </title>
 		<style>
+			body, #RenJS, #turn {
+				padding:0px;
+				overflow:hidden;
+			}
+
+
 			@font-face {
 			  font-family: 'audimat-mono';
 			  src: url('assets/gui/audimat-mono.ttf');
@@ -26,6 +32,20 @@
 				font-weight:normal;
 				font-style:normal;
 			}
+			#turn{
+				width:100%;
+				height:100%;
+				position:fixed;
+				top:0px;
+				left:0px;
+				background-color: #664b4b;
+				background-image: url('assets/resources/playlandscape.png');
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-size:contain;
+				display: none;
+			}
+
 		</style>
 		<script type="text/javascript" scrc="RenJS/Defaults.js"></script>
 		<script type="text/javascript" src="libs/phaser.min.js"></script>
@@ -59,8 +79,10 @@
 	</head>
 
 	<!--<body bgcolor="#000000">-->
-	<body>		
+	<body>
+		<div id="turn"></div>		
 		<div id="RenJS"> </div>
+
 	</body>
 
 </html>

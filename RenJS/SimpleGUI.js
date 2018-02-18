@@ -55,10 +55,10 @@ function SimpleGUI(meta){
         _.each(this.elements.hud.area,function(area){
             var a = area.split(" ");
             // debugger;
-            var x = parseInt(a[0]);
-            var y = parseInt(a[1]);
-            var w = parseInt(a[2])-x;
-            var h = parseInt(a[3])-y;
+            var x = parseInt(a[0])+240;
+            var y = parseInt(a[1])+60;
+            var w = parseInt(a[2])-(x+240);
+            var h = parseInt(a[3])-(y+60);
             this.hud.area.push(new Phaser.Rectangle(x,y,w,h));
         },this);
         this.hud.group.visible = false;
@@ -135,14 +135,40 @@ function SimpleGUI(meta){
         };
         // this.menus[name].group.alpha = 0;
         this.menus[name].group.visible = false;
-
         this.menus[name].background = game.add.image(0,0,name+"Background",0,this.menus[name].group);
-        if (menu.music && !config.settings.muted){
-            this.menus[name].music = game.add.audio(menu.music);
+
+        console.log("in initMenu, about to add music");
+
+        if (typeof menu.music != "undefined" && !config.settings.muted){
+            console.log("actually inside music-adder");
+            var musicExists = _.find(game.sound._sounds, function(soundd){
+                return soundd.key == menu.music;
+            });
+         
+            //if already exists, set music object to pre-existing object
+            if(typeof musicExists !== "undefined"){
+                console.log("that music already exists.");
+                //console.log(musicExists);
+                this.menus[name].music = RenJS.audioManager.musicList[musicExists.name];
+            }else{
+                console.log(menu.music);
+                console.log(typeof menu.music);
+                RenJS.audioManager.musicList[menu.music] = game.add.audio(menu.music);
+                this.menus[name].music = RenJS.audioManager.musicList[menu.music];
+            }
+                //this.menus[name].music = game.add.audio(menu.music);}
+                //debugger;
+                //RenJS.audioManager.musicList[this.menus[name].
+                //debugger;
+                //console.log(this.menus[name].music);
             this.menus[name].music.onDecoded.add(function(){
                 this.menus[name].music.ready = true;
-            }, this);
+                RenJS.audioManager.current.bgm = true;
+            }, this);           
+
         };
+
+
         this.menus[name].buttons = this.initButtons(menu.buttons,this.menus[name].group);
         this.initSliders(menu.sliders,this.menus[name].group);
 
@@ -246,13 +272,36 @@ function SimpleGUI(meta){
         this.menus[menu].group.visible = true;
         console.log(this.menus[menu].group);
         game.add.tween(this.menus[menu].group).to( {alpha:1}, 750,null,true);
+
         if (this.menus[menu].music){
             var music = this.menus[menu].music;
+            console.log("In show menu music handler");
+            console.log(music);
+            //debugger;
             if (music.ready){
-                music.fadeIn(1000);    
+                if(!music.isPlaying){
+                    console.log("Music is ready, isPlaying is ..."+music.isPlaying);
+                    music.fadeIn(1000);
+                    RenJS.audioManager.historyUpdate(music.name);
+                    music.volume = 1;
+                }else{
+                    console.log("music is ready, volume is... ");
+                    console.log("gonna fade out for a bit.");
+                    music.fadeOut(750);
+                    setTimeout(function() {
+                     console.log("aaand fading back in.");
+                     music.fadeIn(750);
+                     RenJS.audioManager.historyUpdate(music.name);
+                   }, 500); 
+                    //music.fadeTo(1000, 1);
+                }
+                
+                    
             } else {
                setTimeout(function() {
+                 console.log("music is not ready, fade in in a bit I guess");
                  music.fadeIn(1000);
+                 RenJS.audioManager.historyUpdate(music.name);
                }, 1000); 
             }
             
